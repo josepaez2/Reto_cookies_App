@@ -11,7 +11,13 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
+		<%= render 'layouts/header' %>
+		<div class="container">
+			<% flash.each do |message_type, message| %>
+			<div class="alert alert-<%= message_type %>"><%= message %></div>
+			<% end %>
   	<%= yield %>
+		<%= render 'layouts/footer' %>
 <!--     <h1>Hello, world!</h1> -->
     <script src="js/vendor/jquery.js"></script>
     <script src="js/vendor/what-input.js"></script>

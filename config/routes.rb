@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { sessions: 'users/sessions' }
   # SI QUIERES VER LAS RUTAS MIRA EN RAILS ROUTES
-  root 'users#index'
+  root 'announcements#index'
   get 'announcements/index'
   get 'announcements/show'
   get 'announcements/new'
