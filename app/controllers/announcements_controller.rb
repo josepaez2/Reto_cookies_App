@@ -2,6 +2,7 @@ class AnnouncementsController < ApplicationController
   
   def index
     @announcements = Announcement.all
+    @current_user = current_user
   end
   def show
     @announcement = Announcement.find(params[:id])
