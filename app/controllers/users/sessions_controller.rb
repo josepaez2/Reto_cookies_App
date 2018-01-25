@@ -16,7 +16,10 @@ class Users::SessionsController < Devise::SessionsController
   # DELETE /resource/sign_out
   # def destroy
   #   # super
-    
+  #   user_session = nil
+  #   # user.forget
+  #   cookies.delete(:user_id)
+  #   cookies.delete(:remember_token)
   # end
 
   # protected

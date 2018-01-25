@@ -23,7 +23,7 @@
           <div class="callout grid-x grid-padding-x">
             <span id="#{}" class="description"><%= announcement.content %> &nbsp-&nbspmade by: <%= announcement.user.name %>
               <%= announcement.user.last_name %> </span>
-              <span>&nbsp&nbsp&nbsp&nbsp<%= link_to "Mark as read", "#", class: "button" %></span>
+              <span>&nbsp&nbsp&nbsp&nbsp<%= link_to "Mark as read", "/announcements/ #{announcement.id}", :method => :delete, class: "button" %></span>
 <!--               <span class="description">
                 <%#= announcement.expiration_date %>
                 <%#= l(announcement.expiration_date, format: "%d") %>

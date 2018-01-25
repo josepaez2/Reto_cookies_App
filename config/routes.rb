@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   root 'announcements#index'
-  resources :announcements, except: [:edit, :update, :destroy]
+  resources :announcements, except: [:edit, :update]
   devise_for :users, controllers: { sessions: 'users/sessions' }
 
 
