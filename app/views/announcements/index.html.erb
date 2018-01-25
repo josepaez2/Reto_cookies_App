@@ -1,11 +1,17 @@
 
 <% if !@current_user.nil? %>
-  <h1> &nbspWelcome back <%= @current_user.name%> <%=@current_user.last_name %>&nbsp!</h1>
-  <p>&nbsp&nbspShare what you're living at this moment by making a new announcement</p>
-  <div>
-    <%= link_to "Create a new announcement", new_announcement_path, class: "button" %>
-  </div>
-  <p>You can also checkout what other people have posted in the Announcements Billboard by scrolling down</p>
+  <div class="grid-container">
+    <div class="grid-x grid-padding-x">
+      <div class="large-12 cell">
+        <h1><%= gravatar_for @current_user %> &nbspWelcome <%= @current_user.name%> <%=@current_user.last_name %>&nbsp!</h1>
+          <p>&nbsp&nbspShare what you're living at this moment by making a new announcement</p>
+            <div>
+              <%= link_to "Create a new announcement", new_announcement_path, class: "button" %>
+            </div>
+          <p>You can also checkout what other people have posted in the Announcements Billboard by scrolling down</p>
+        </div>
+      </div>
+    </div>
   <div class="grid-container">
     <div class="grid-x grid-padding-x">
       <div class="large-12 cell">
