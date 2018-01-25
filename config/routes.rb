@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
 
   root 'announcements#index'
-  resources :announcements, except: [:edit, :update]
+
+  resources :announcements, except: [:edit, :update, :show]
   devise_for :users, controllers: { sessions: 'users/sessions' }
+
+ get '/announcements/history', to: "announcements#history" , as: "announcements_history"
+ 
 
 
   #   # For giving scope to parameters:
@@ -19,10 +23,10 @@ Rails.application.routes.draw do
 
 #                   Prefix Verb   URI Pattern                      Controller#Action
 #                     root GET    /                              announcements#index
-#       announcement_index GET    /announcement(.:format)        announcement#index
-#                          POST   /announcement(.:format)        announcement#create
-#         new_announcement GET    /announcement/new(.:format)    announcement#new
-#             announcement GET    /announcement/:id(.:format)    announcement#show
+#       announcement_index GET    /announcement(.:format)        announcements#index
+#                          POST   /announcement(.:format)        announcements#create
+#         new_announcement GET    /announcement/new(.:format)    announcements#new
+#             announcement GET    /announcement/:id(.:format)    announcements#show
 #         new_user_session GET    /users/sign_in(.:format)       users/sessions#new
 #             user_session POST   /users/sign_in(.:format)       users/sessions#create
 #     destroy_user_session DELETE /users/sign_out(.:format)      users/sessions#destroy

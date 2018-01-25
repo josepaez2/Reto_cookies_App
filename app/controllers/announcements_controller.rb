@@ -4,9 +4,9 @@ class AnnouncementsController < ApplicationController
     @announcements = Announcement.all
     @current_user = current_user
   end
-  def show
-    @announcement = Announcement.find(params[:id])
-  end
+  # def show
+  #   @announcement = Announcement.find(params[:id])
+  # end
   def new
     @announcement = Announcement.new
   end
@@ -26,8 +26,14 @@ class AnnouncementsController < ApplicationController
 
   def destroy
     @announcement = Announcement.find(params[:id])
-    @announcement.destroy
+    # @announcement.destroy
+    @announcement.update_attributes(seen_state: true)
     redirect_to root_path
+  end
+  def history
+    @announcements = Announcement.all
+    @current_user = current_user
+    render :history
   end
   
   # private

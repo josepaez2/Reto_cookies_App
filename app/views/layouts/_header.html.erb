@@ -38,13 +38,15 @@
 		<div class="top-bar-right">
 			<ul class="dropdown menu" data-dropdown-menu>
 				<li>
-					<a href="/">Home</a>
-					<ul class="menu vertical">
+					<%= link_to "Home", root_path %>
+
+<!-- 					<ul class="menu vertical">
 						<li><a href="#">1</a></li>
 						<li><a href="#">2</a></li>
 						<li><a href="#">3</a></li>
-					</ul>
+					</ul> -->
 				</li>
+				<li><%= link_to "History", announcements_history_path %></li>
 				<% if user_signed_in? %>
 				<li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete%></li>
 				<% else %>

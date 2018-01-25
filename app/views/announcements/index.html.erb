@@ -18,7 +18,7 @@
       <div class="large-12 cell">
         <div >
           <% @announcements.each do |announcement| %>
-          <%# if !announcement.seen_state %>
+          <% if !announcement.seen_state %>
           <%  %>
           <div class="callout grid-x grid-padding-x">
             <span id="#{}" class="description"><%= announcement.content %> &nbsp-&nbspmade by: <%= announcement.user.name %>
@@ -36,7 +36,7 @@
       </div>
     </div>
   </div>
-    <%# end %>
+    <% end %>
     <% end %>
 
     <% else %>
