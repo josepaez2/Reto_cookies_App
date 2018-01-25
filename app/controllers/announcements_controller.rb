@@ -28,8 +28,8 @@ class AnnouncementsController < ApplicationController
   
   # private
 
-  # def announcement_params
-  #   params.require(:announcement).permit(:content, :expiration_date, :seen_state)
-  # end
+  def announcement_params
+    params.require(:announcement).permit(:content, :expiration_date, :seen_state)
+  end
 
 end
