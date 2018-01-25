@@ -12,13 +12,15 @@ class AnnouncementsController < ApplicationController
   end
   def create
     @user = current_user
-    # @announcement = Announcement.new(announcement_params)
-    @user.announcements.create(announcement_params)
-    # if @user.announcements.save
-      # log_in @user
-      # redirect_to @user
-      redirect_to action: "index", id: 5
-      flash.now[:success] = "Your announcement was published successfully!"
+    @announcement = @user.announcements.new(announcement_params)
+    # @user.announcements.create(announcement_params)
+    if @announcement.save
+      redirect_to action: "index", notice: "Your announcement was published successfully!"
+      # flash.now[:success] = "Your announcement was published successfully!"
+    else
+      redirect_to new_announcement_path(@announcement), danger: "Invalid announcement, your announcement is more than 140 characters, please try making it shorter"
+      # flash.now[:danger] = "Your announcement is more than 140 characters, please try making it shorter"
+    end
   end
 
   # def destroy

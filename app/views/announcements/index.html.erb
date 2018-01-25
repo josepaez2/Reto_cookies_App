@@ -2,7 +2,7 @@
 <p>Find me in app/views/announcements/index.html.erb</p> -->
 <% if !@current_user.nil? %>
   <h1> &nbspWelcome back <%= @current_user.name%> <%=@current_user.last_name %>&nbsp!</h1>
-  <p>&nbsp&nbspAt this moment there aren't new announcements</p>
+  <p>&nbsp&nbspShare what you're living at this moment by making a new announcement</p>
 <div><%= link_to "Create a new announcement", new_announcement_path, class: "button" %></div>
 
       <% @announcements.each do |announcement| %>
