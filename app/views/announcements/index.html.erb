@@ -1,9 +1,10 @@
-<!-- <h1>Announcements#index</h1>
-  <p>Find me in app/views/announcements/index.html.erb</p> -->
-  <% if !@current_user.nil? %>
+
+<% if !@current_user.nil? %>
   <h1> &nbspWelcome back <%= @current_user.name%> <%=@current_user.last_name %>&nbsp!</h1>
   <p>&nbsp&nbspShare what you're living at this moment by making a new announcement</p>
-  <div><%= link_to "Create a new announcement", new_announcement_path, class: "button" %></div>
+  <div>
+    <%= link_to "Create a new announcement", new_announcement_path, class: "button" %>
+  </div>
   <p>You can also checkout what other people have posted in the Announcements Billboard by scrolling down</p>
   <div class="grid-container">
     <div class="grid-x grid-padding-x">
@@ -16,60 +17,27 @@
   <div class="grid-container">
     <div class="grid-x grid-padding-x">
       <div class="large-12 cell">
-        <div >
+        <div>
           <% @announcements.each do |announcement| %>
-          <% if !announcement.seen_state && Date.current < announcement.expiration_date%>
-          
-<!--           <div><%#= Date.current %></div>
-          <div><%#= announcement.expiration_date %></div>
-          <%# if Date.current < announcement.expiration_date %>
-          <div>aaaa</div> -->
-          
-          <%# end %>
-          <!--         <div><%#= if Date.current > announcement.expiration_date %></div> -->
-          <div class="callout grid-x grid-padding-x">
-            <span id="#{}" class="description"><%= announcement.content %> &nbsp-&nbspmade by: <%= announcement.user.name %>
-              <%= announcement.user.last_name %> </span>
-              <span>&nbsp&nbsp&nbsp&nbsp<%= link_to "Mark as read", "/announcements/ #{announcement.id}", :method => :delete, class: "button" %></span>
-<!--               <span class="description">
-                <%#= announcement.expiration_date %>
-                <%#= l(announcement.expiration_date, format: "%d") %>
-                <%#= l(announcement.expiration_date, format: "%b") %>
-              </span> -->
-              <!--             <span class ="button"><%#= announcement.update_attributes(seen_state: true) %>x</span> -->
-            </div>
-          </div>
+            <% if !announcement.seen_state && Date.current < announcement.expiration_date%>
+              <div class="callout grid-x grid-padding-x">
+                <span id="#{}" class="description">
+                  <%= announcement.content %> &nbsp-&nbspmade by:
+                  <%= announcement.user.name %>
+                  <%= announcement.user.last_name %>
+                </span>
+                <span>
+                  &nbsp&nbsp&nbsp&nbsp<%= link_to "Mark as read", "/announcements/ #{announcement.id}", :method => :delete, class: "button" %>
+                </span>
+              </div>
+            <% end %>
+          <% end %>
         </div>
       </div>
     </div>
   </div>
-  <% end %>
-  <% end %>
-
-  <!-- <%# else %>
-  <div class="grid-container">
-    <div class="grid-x grid-padding-x">
-      <div class="large-12 cell">
-        <h1>Welcome to Facebook</h1>
-      </div>
-    </div>
-
-    <div class="grid-x grid-padding-x">
-      <div class="large-12 cell">
-        <div class="callout">
-          <h3>We&rsquo;re stoked you want to try Facebook! </h3>
-          <p>To get going, this file (index.html) includes some basic styles you can modify, play around with, or totally destroy to get going.</p>
-          <p>Once you've exhausted the fun in this document, you should check out:</p>
-
- -->
-
-<!--         </div>
-      </div>
-    </div>
-
-
-  </div>
-</div> -->
+<% else %>
+  <h1>Please sign up, or log in.</h1>
 <% end %>
 
 

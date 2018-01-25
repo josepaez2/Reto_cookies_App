@@ -5,23 +5,19 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Reto2App</title>
-<!--     <link rel="stylesheet" href="css/foundation.css" /> -->
+    <!--     <link rel="stylesheet" href="css/foundation.css" /> -->
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-		<%= render 'layouts/header' %>
-		<div class="container">
-			<% flash.each do |message_type, message| %>
-			<div class="alert alert-<%= message_type %>"><%= message %></div>
-			<% end %>
+    <%= render 'layouts/header' %>
+    <div class="container">
+      <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>
     </div>
-  	<%= yield %>
-		<%= render 'layouts/footer' %>
-<!--     <h1>Hello, world!</h1> -->
-<!--     <script>
-      $(document).foundation('alert', 'reflow');
-    </script> -->
+    <%= yield %>
+   <%= render 'layouts/footer' %>
   </body>
 </html>
