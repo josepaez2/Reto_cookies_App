@@ -19,10 +19,11 @@
         <div >
           <% @announcements.each do |announcement| %>
           <%# if !announcement.seen_state %>
+          <%  %>
           <div class="callout grid-x grid-padding-x">
-            <span class="description"><%= announcement.content %></span>
-            <span class="description"> &nbsp-&nbspmade by: <%= announcement.user.name %>
+            <span id="#{}" class="description"><%= announcement.content %> &nbsp-&nbspmade by: <%= announcement.user.name %>
               <%= announcement.user.last_name %> </span>
+              <span>&nbsp&nbsp&nbsp&nbsp<%= link_to "Mark as read", "#", class: "button" %></span>
 <!--               <span class="description">
                 <%#= announcement.expiration_date %>
                 <%#= l(announcement.expiration_date, format: "%d") %>
