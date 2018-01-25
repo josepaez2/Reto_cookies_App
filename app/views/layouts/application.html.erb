@@ -16,15 +16,12 @@
 			<% flash.each do |message_type, message| %>
 			<div class="alert alert-<%= message_type %>"><%= message %></div>
 			<% end %>
+    </div>
   	<%= yield %>
 		<%= render 'layouts/footer' %>
 <!--     <h1>Hello, world!</h1> -->
-    <script src="js/vendor/jquery.js"></script>
-    <script src="js/vendor/what-input.js"></script>
-    <script src="js/vendor/foundation.min.js"></script>
-    <script>
+<!--     <script>
       $(document).foundation();
-    </script>
-
+    </script> -->
   </body>
 </html>
