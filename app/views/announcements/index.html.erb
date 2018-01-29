@@ -24,18 +24,22 @@
     <div class="grid-x grid-padding-x">
       <div class="large-12 cell">
         <div>
-          <% @announcements.each do |announcement| %>
-            <% if !announcement.seen_state && Date.current < announcement.expiration_date%>
-              <div class="callout grid-x grid-padding-x">
-                <span id="#{}" class="description">
-                  <%= announcement.content %> &nbsp-&nbspmade by:
-                  <%= announcement.user.name %>
-                  <%= announcement.user.last_name %>
-                </span>
-                <span>
-                  &nbsp&nbsp&nbsp&nbsp<%= link_to "Mark as read", "/announcements/ #{announcement.id}", :method => :delete, class: "button" %>
-                </span>
-              </div>
+          <% if @announcements %>
+            <% @announcements.each do |announcement| %>
+              <% if Date.current < announcement.expiration_date%>
+                <div class="callout grid-x grid-padding-x">
+                  <span class="description">
+                    <%= announcement.content %> &nbsp-&nbspmade by:
+                    <%= announcement.user.name %>
+                    <%= announcement.user.last_name %>
+                  </span>
+                  <span>
+                    &nbsp&nbsp&nbsp&nbsp
+                    <%= link_to "Mark as read", announcement_path(announcement), class: "button" %>
+                    <%#= link_to "Mark as read", "/announcements/ #{announcement.id}", class: "button" %>
+                  </span>
+                </div>
+              <% end %>
             <% end %>
           <% end %>
         </div>

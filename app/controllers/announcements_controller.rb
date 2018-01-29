@@ -1,12 +1,20 @@
 class AnnouncementsController < ApplicationController
   
   def index
-    @announcements = Announcement.all
-    @current_user = current_user
+    if current_user
+      @announcements = Announcement.unread_by(current_user)
+      @current_user = current_user
+    end
   end
   # def show
   #   @announcement = Announcement.find(params[:id])
   # end
+  def show
+    @announcement = Announcement.find(params[:id])
+    @announcement.mark_as_read! for: current_user
+    redirect_to :root
+    # render :index
+  end
   def new
     @announcement = Announcement.new
   end
@@ -31,7 +39,7 @@ class AnnouncementsController < ApplicationController
     redirect_to root_path
   end
   def history
-    @announcements = Announcement.all
+    @announcements = Announcement.read_by(current_user)
     @current_user = current_user
     render :history
   end

@@ -6,7 +6,7 @@ class CreateAnnouncements < ActiveRecord::Migration[5.1]
       t.datetime :expiration_date
       t.boolean :seen_state
 
-      t.timestamps
+      t.timestamps index: true
     end
   end
 end

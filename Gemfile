@@ -7,7 +7,8 @@ end
 
 # Ruby version
 ruby '2.4.1'
-
+# Mark records a read
+gem 'unread', '0.9.1'
 # Use Devise for authentication
 gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
