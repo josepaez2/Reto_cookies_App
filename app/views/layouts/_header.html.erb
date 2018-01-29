@@ -15,10 +15,10 @@
 				<li>
 					<%= link_to "Home", root_path, :style=>'color: white;'%>
 				</li>
-				<li>
-					<%= link_to "History", announcements_history_path, :style=>'color: white;'%>
-				</li>
 				<% if user_signed_in? %>
+					<li>
+						<%= link_to "History", announcements_history_path, :style=>'color: white;'%>
+					</li>
 					<li>
 						<%= link_to 'Sign out', destroy_user_session_path, :method => :delete, :style=>'color: white;'%>
 					</li>

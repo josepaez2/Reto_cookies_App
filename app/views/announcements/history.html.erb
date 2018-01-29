@@ -13,14 +13,15 @@
   <div class="grid-container">
     <div class="grid-x grid-padding-x">
       <div class="large-12 cell">
-        <% @announcements.each do |announcement| %>
-          <% if announcement.seen_state %>
-            <div class="callout grid-x grid-padding-x">
-              <span id="#{}" class="description">
-                <%= announcement.content %> &nbsp-&nbspmade by: <%= announcement.user.name %>
-                <%= announcement.user.last_name %>
-              </span>
-            </div>
+        <% if @announcements %>
+          <% @announcements.each do |announcement| %>
+              <div class="callout grid-x grid-padding-x">
+                <span class="description">
+                  <%= announcement.content %> &nbsp-&nbspmade by:
+                  <%= announcement.user.name %>
+                  <%= announcement.user.last_name %>
+                </span>
+              </div>
           <% end %>
         <% end %>
       </div>
@@ -29,5 +30,20 @@
 <% else %>
   <h1>Please sign up, or log in.</h1>
 <% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
