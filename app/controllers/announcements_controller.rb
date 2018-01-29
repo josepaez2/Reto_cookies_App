@@ -9,7 +9,7 @@ class AnnouncementsController < ApplicationController
   # def show
   #   @announcement = Announcement.find(params[:id])
   # end
-  def show
+  def read
     @announcement = Announcement.find(params[:id])
     @announcement.mark_as_read! for: current_user
     redirect_to :root
@@ -32,12 +32,12 @@ class AnnouncementsController < ApplicationController
     end
   end
 
-  def destroy
-    @announcement = Announcement.find(params[:id])
-    # @announcement.destroy
-    @announcement.update_attributes(seen_state: true)
-    redirect_to root_path
-  end
+  # def destroy
+  #   @announcement = Announcement.find(params[:id])
+  #   # @announcement.destroy
+  #   @announcement.update_attributes(seen_state: true)
+  #   redirect_to root_path
+  # end
   def history
     @announcements = Announcement.read_by(current_user)
     @current_user = current_user

@@ -2,10 +2,14 @@ Rails.application.routes.draw do
 
   root 'announcements#index'
 
-  resources :announcements, except: [:edit, :update]
+  resources :announcements, except: [:edit, :update, :show, :destroy]
+ 	
+ 	get '/announcements/history', to: "announcements#history" , as: "announcements_history"
+	get '/announcements/:id', to: "announcements#read" , as: "announcement_read"
+  
   devise_for :users, controllers: { sessions: 'users/sessions' }
 
- get '/announcements/history', to: "announcements#history" , as: "announcements_history"
+
 
 
 
