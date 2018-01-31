@@ -2,18 +2,28 @@ class AnnouncementsController < ApplicationController
   
   def index
     if current_user
-      @announcements = Announcement.unread_by(current_user)
+      @announcements = Announcement.where.not(id: cookies.signed[:announcement_id])
+      # @announcements = Announcement.unread_by(current_user)
       @current_user = current_user
     end
   end
   # def show
   #   @announcement = Announcement.find(params[:id])
   # end
+  # def read
+  #   @announcement = Announcement.find(params[:id])
+  #   @announcement.mark_as_read! for: current_user
+  #   redirect_to :root
+  #   # render :index
+  # end
   def read
-    @announcement = Announcement.find(params[:id])
-    @announcement.mark_as_read! for: current_user
+    cookies.signed[:announcement_id] ||= []
+    announcements = cookies.signed[:announcement_id]
+    announcements = announcements & announcements
+    announcement = Announcement.find(params[:id])
+    announcements << announcement.id
+    cookies.permanent.signed[:announcement_id] = announcements
     redirect_to :root
-    # render :index
   end
   def new
     @announcement = Announcement.new
@@ -39,7 +49,8 @@ class AnnouncementsController < ApplicationController
   #   redirect_to root_path
   # end
   def history
-    @announcements = Announcement.read_by(current_user)
+      @announcements = Announcement.where(id: cookies.signed[:announcement_id])
+    # @announcements = Announcement.read_by(current_user)
     @current_user = current_user
     render :history
   end
